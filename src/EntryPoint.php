@@ -6,7 +6,9 @@ namespace Z3\PHP\Development;
 
 use Symfony\Component\Console\Application;
 use Z3\PHP\Development\Command\JobWrapperCommand;
+use Z3\PHP\Development\Job\PHPFixJob;
 use Z3\PHP\Development\Job\PHPStanJob;
+use Z3\PHP\Development\Job\PHPStyleJob;
 
 class EntryPoint
 {
@@ -23,6 +25,16 @@ class EntryPoint
             'run:stan',
             '',
             PHPStanJob::class
+        );
+        $this->addJob(
+            'run:style',
+            '',
+            PHPStyleJob::class
+        );
+        $this->addJob(
+            'run:fix',
+            '',
+            PHPFixJob::class
         );
         $this->application->run();
     }
