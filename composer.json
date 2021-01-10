@@ -1,0 +1,24 @@
+{
+  "name": "z3/php-development",
+  "description": "PHP Development toolbox using tools 'php-cs-fixer', 'phpstan', 'phpmd', 'phpunit'",
+  "license": "proprietary",
+  "type": "development-framework",
+  "require": {
+    "php": "^7.4.7",
+    "symfony/process": "^v5.2.1|^4.4.18",
+    "phpstan/phpstan": "^0.12.64",
+    "phpstan/phpstan-strict-rules": "^0.12.7",
+    "thecodingmachine/phpstan-strict-rules": "^0.12.1",
+    "phpmd/phpmd": "3.x-dev",
+    "friendsofphp/php-cs-fixer": "^v2.17.3",
+    "phpunit/phpunit": "^9.5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Z3\\PHP\\Development\\": "src"
+    }
+  },
+  "bin": [
+    "binary/php-dev"
+  ]
+}
