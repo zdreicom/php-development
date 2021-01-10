@@ -7,6 +7,7 @@ namespace Z3\PHP\Development;
 use Symfony\Component\Console\Application;
 use Z3\PHP\Development\Command\JobWrapperCommand;
 use Z3\PHP\Development\Job\PHPFixJob;
+use Z3\PHP\Development\Job\PHPMessDetectorJob;
 use Z3\PHP\Development\Job\PHPStanJob;
 use Z3\PHP\Development\Job\PHPStyleJob;
 
@@ -34,6 +35,11 @@ class EntryPoint
             'run:fix',
             '',
             PHPFixJob::class
+        );
+        $this->addJob(
+            'run:md',
+            '',
+            PHPMessDetectorJob::class
         );
         $this->application->run();
     }
