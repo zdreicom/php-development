@@ -34,15 +34,15 @@ class BuildRunFilesJob implements JobInterface
         return 0;
     }
 
-    protected function copyFile(string $name)
+    protected function copyFile(string $name): void
     {
-        $from = 'vendor/z3/php-development/run/' . $name;
-        $to = 'run/' . $name;
-        if (\file_exists($to) === true) {
-            \unlink($to);
+        $copyFrom = 'vendor/z3/php-development/run/' . $name;
+        $copyTo = 'run/' . $name;
+        if (\file_exists($copyTo) === true) {
+            \unlink($copyTo);
         }
-        $content = \file_get_contents($from);
-        \file_put_contents($to, $content);
-        \chmod($to, 0750);
+        $content = \file_get_contents($copyFrom);
+        \file_put_contents($copyTo, $content);
+        \chmod($copyTo, 0750);
     }
 }
