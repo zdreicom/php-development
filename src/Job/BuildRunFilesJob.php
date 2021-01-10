@@ -6,7 +6,6 @@ namespace Z3\PHP\Development\Job;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Process\Process;
 use Z3\PHP\Development\Contracts\JobInterface;
 
 class BuildRunFilesJob implements JobInterface
@@ -18,13 +17,16 @@ class BuildRunFilesJob implements JobInterface
      */
     public function run(InputInterface $input, OutputInterface $output): int
     {
-        if(\is_dir('run') !== true) {
+        if (\is_dir('run') !== true) {
             \mkdir('run');
         }
         $files = [
             'composer-update.sh',
-            'php-style.sh',
-            'docker-shell.sh'
+            'docker-shell.sh',
+            'phpfix.sh',
+            'phpmd.sh',
+            'phpstan.sh',
+            'phpstyle.sh',
         ];
         foreach ($files as $file) {
             $this->copyFile($file);
@@ -36,7 +38,7 @@ class BuildRunFilesJob implements JobInterface
     {
         $from = 'vendor/z3/php-development/run/' . $name;
         $to = 'run/' . $name;
-        if(\file_exists($to) === true) {
+        if (\file_exists($to) === true) {
             \unlink($to);
         }
         $content = \file_get_contents($from);
