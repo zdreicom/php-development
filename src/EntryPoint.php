@@ -12,7 +12,6 @@ use Z3\PHP\Development\Job\PHPStyleJob;
 
 class EntryPoint
 {
-
     protected Application $application;
 
     /**
