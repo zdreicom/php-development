@@ -6,6 +6,7 @@ namespace Z3\PHP\Development;
 
 use Symfony\Component\Console\Application;
 use Z3\PHP\Development\Command\JobWrapperCommand;
+use Z3\PHP\Development\Job\BuildRunFilesJob;
 use Z3\PHP\Development\Job\PHPFixJob;
 use Z3\PHP\Development\Job\PHPMessDetectorJob;
 use Z3\PHP\Development\Job\PHPStanJob;
@@ -40,6 +41,11 @@ class EntryPoint
             'run:md',
             '',
             PHPMessDetectorJob::class
+        );
+        $this->addJob(
+            'build:run-files',
+            '',
+            BuildRunFilesJob::class
         );
         $this->application->run();
     }
