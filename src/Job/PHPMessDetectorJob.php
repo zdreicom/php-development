@@ -21,7 +21,7 @@ class PHPMessDetectorJob implements JobInterface
         error_reporting(E_ALL ^ E_DEPRECATED);
 
         $processCommand = [
-            'vendor/z3/php-development/binary/php-md',
+            'vendor/z3/php-development/binary/php-md-runner',
             'packages',
             'text',
             'cleancode,codesize,controversial,design,naming,unusedcode'

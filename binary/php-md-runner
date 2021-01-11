@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+
+require_once \getcwd() . '/vendor/autoload.php';
+
+$phpMessDetectorService = new \Z3\PHP\Development\Service\PHPMessDetectorService();
+$exitCode = $phpMessDetectorService->run($_SERVER);
+exit($exitCode);
