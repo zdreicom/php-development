@@ -67,6 +67,13 @@ class JobWrapperCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        return $this->job->run($input, $output);
+        $exitCode = 1;
+        try {
+            $exitCode = $this->job->run($input, $output);
+        } catch (\Throwable $exception) {
+            $output->writeln($exception->getMessage());
+            return $exitCode;
+        }
+        return $exitCode;
     }
 }
