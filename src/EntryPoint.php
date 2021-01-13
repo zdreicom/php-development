@@ -11,6 +11,7 @@ use Z3\PHP\Development\Job\PHPFixJob;
 use Z3\PHP\Development\Job\PHPMessDetectorJob;
 use Z3\PHP\Development\Job\PHPStanJob;
 use Z3\PHP\Development\Job\PHPStyleJob;
+use Z3\PHP\Development\Job\SplitPackageJob;
 
 class EntryPoint
 {
@@ -47,6 +48,12 @@ class EntryPoint
             '',
             BuildRunFilesJob::class
         );
+        $this->addJob(
+            'split:package',
+            '',
+            SplitPackageJob::class,
+
+        );
         $this->application->run();
     }
 
@@ -54,10 +61,11 @@ class EntryPoint
      * @param string $name
      * @param string $description
      * @param string $jobClassName
+     * @param array $arguments
      */
-    protected function addJob(string $name, string $description, string $jobClassName): void
+    protected function addJob(string $name, string $description, string $jobClassName, array $arguments = []): void
     {
-        $command = new JobWrapperCommand($name, $description, new $jobClassName);
+        $command = new JobWrapperCommand($name, $description, new $jobClassName, $arguments);
         $this->application->add($command);
     }
 }

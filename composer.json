@@ -19,6 +19,7 @@
     }
   },
   "bin": [
-    "binary/php-dev"
+    "binary/php-dev",
+    "binary/php-md-runner"
   ]
 }

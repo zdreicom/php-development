@@ -41,7 +41,7 @@ class JobWrapperCommand extends Command
      * @param JobInterface $job
      * @param InputArgument[] $arguments
      */
-    public function __construct(string $name, string $description, JobInterface $job, array $arguments = [])
+    public function __construct(string $name, string $description, JobInterface $job, array $arguments)
     {
         $this->name = $name;
         $this->description = $description;
