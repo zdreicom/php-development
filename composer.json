@@ -20,6 +20,7 @@
   },
   "bin": [
     "binary/php-dev",
-    "binary/php-md-runner"
+    "binary/php-md-runner",
+    "lib/splitsh-lite"
   ]
 }

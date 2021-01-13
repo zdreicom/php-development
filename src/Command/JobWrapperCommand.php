@@ -59,7 +59,6 @@ class JobWrapperCommand extends Command
             ->setName($this->name)
             ->setDescription($this->description);
 
-        /** @var InputArgument $argument */
         foreach ($this->arguments as $argument) {
             $this->getDefinition()->addArgument($argument);
         }

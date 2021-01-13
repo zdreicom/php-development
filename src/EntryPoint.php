@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Z3\PHP\Development;
 
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\InputArgument;
 use Z3\PHP\Development\Command\JobWrapperCommand;
 use Z3\PHP\Development\Job\BuildRunFilesJob;
 use Z3\PHP\Development\Job\PHPFixJob;
@@ -52,7 +53,20 @@ class EntryPoint
             'split:package',
             '',
             SplitPackageJob::class,
-
+            [
+                new InputArgument(
+                    'package-path',
+                    InputArgument::REQUIRED
+                ),
+                new InputArgument(
+                    'package-name',
+                    InputArgument::REQUIRED
+                ),
+                new InputArgument(
+                    'remote-repository',
+                    InputArgument::REQUIRED
+                ),
+            ]
         );
         $this->application->run();
     }
@@ -61,7 +75,7 @@ class EntryPoint
      * @param string $name
      * @param string $description
      * @param string $jobClassName
-     * @param array $arguments
+     * @param InputArgument[] $arguments
      */
     protected function addJob(string $name, string $description, string $jobClassName, array $arguments = []): void
     {
